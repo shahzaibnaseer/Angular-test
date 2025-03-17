@@ -1,0 +1,31 @@
+.btn-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 15px;
+  width: 100%;
+}
+.btn-chat {
+  background: linear-gradient(45deg, #ff9800, #ff5722) !important;
+  color: white !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  &:hover {
+    background: linear-gradient(45deg, #ff5722, #ff9800) !important;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+  }
+
+  mat-icon {
+    font-size: 24px;
+  }
+}
+
+.card {
+  margin: 20px;
+}
+.head {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}

@@ -1,0 +1,52 @@
+<div class="header">
+  <h2 mat-dialog-title>Send Message</h2>
+  <button mat-icon-button mat-dialog-close class="close-icon">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+@if(messagesLoading$ |async){
+<mat-progress-bar mode="indeterminate" stye></mat-progress-bar>
+}
+
+<form [formGroup]="messageForm" (ngSubmit)="addMessage()">
+  <mat-dialog-content class="form-container">
+    <!-- Email Field -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="your.email@example.com"
+        type="email"
+      />
+      @if (messageForm.controls['email'].hasError('required') &&
+      messageForm.controls['email'].touched) {
+      <mat-error>Email address is required</mat-error>
+      } @if (messageForm.controls['email'].hasError('email') &&
+      !messageForm.controls['email'].hasError('required')) {
+      <mat-error>Please enter a valid email address</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Message Field -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        formControlName="message"
+        rows="5"
+        placeholder="Type your message here..."
+      ></textarea>
+      @if (messageForm.controls['message'].hasError('required') &&
+      messageForm.controls['message'].touched) {
+      <mat-error>Please enter a message</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Action Buttons -->
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" cdkFocusInitial>Send</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,56 @@
+<div class="btn-container">
+  <mat-card appearance="raised" class="card" style="width: 100%">
+    @if(messagesLoading$ | async){
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    <mat-card-header>
+      <div class="head">
+        <button
+          class="btn-chat"
+          mat-mini-fab
+          aria-label="Example icon button with a menu icon"
+          (click)="openDialog()"
+        >
+          <mat-icon> chat_bubble</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Show Loading Spinner if Messages are Loading -->
+
+      <table mat-table [dataSource]="messages" class="mat-elevation-z8">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let message">{{ message.id }}</td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let message">{{ message.email }}</td>
+        </ng-container>
+
+        <!-- Message Column (Trimmed to 100 chars) -->
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef>Message</th>
+          <td mat-cell *matCellDef="let message">
+            {{ message.message | slice : 0 : 100 }}
+            @if(message.message.length>100){<span>...</span>}
+          </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let message">
+            {{ message.createdAt | date : "short" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
