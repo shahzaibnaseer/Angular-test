@@ -29,3 +29,10 @@
   display: flex;
   justify-content: end;
 }
+.message-dialog{
+  overflow: none;
+}
+::ng-deep .mat-mdc-dialog-surface {
+
+  overflow: hidden !important;/* Prevent unwanted scrolling */
+}

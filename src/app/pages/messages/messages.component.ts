@@ -50,8 +50,9 @@ export class MessagesComponent {
   }
   openDialog() {
     this.dialog.open(MessageDialogComponent, {
-      minWidth: '500px',
+      width: '500px',
       disableClose: true,
+      panelClass: 'message-dialog',
     });
   }
 }
