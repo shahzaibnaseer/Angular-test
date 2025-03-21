@@ -43,7 +43,7 @@ export class MessagesComponent {
     this.messagesLoading$.subscribe((loading) => {
       console.log(loading);
     });
-    // this.store.dispatch(loadMessages());
+    this.store.dispatch(loadMessages());
     this.messages$.subscribe((res) => {
       this.messages = res;
     });

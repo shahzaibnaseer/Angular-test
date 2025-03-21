@@ -23,7 +23,7 @@ export class AppComponent {
   store = inject(Store);
   title = 'angular-test';
   ngOnInit() {
-    this.store.dispatch(loadMessages());
+ 
   }
   onMessagesClick() {
     this.router.navigate(['messages']);
